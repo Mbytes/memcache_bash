@@ -1,6 +1,20 @@
 #!/bin/bash
 #
 
+
+#Control Numero parametros
+if test x = ${1}x
+then
+        echo "ERROR FALTAN PARAMETROS"
+        echo "Prefijos:"
+        echo "IPWP	IPFirewall "
+        echo "GEIP	Geoip"
+        echo "$0 [PREFIJO|IPWP|GEIP]"
+        exit    
+fi
+
+PREFIX=$1
+
 #Crea variable para ver estadisticas
 read -d '' STATS <<- "_EOF_"
 stats items
@@ -17,7 +31,7 @@ quit
 _EOF_
 
 #Crea estadisticas y filtra
-echo "${RSLAB}" | sed -e "s/DATA01/$1/" -e "s/DATA02/$2/" | nc localhost 11211 | grep IPWP
+echo "${RSLAB}" | sed -e "s/DATA01/$1/" -e "s/DATA02/$2/" | nc localhost 11211 | grep ${PREFIX}
 
 }	#EndFunction
 

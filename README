@@ -1,0 +1,3 @@
+
+dump_memcache.sh	Lista los datos existentes en cache, hay que darle como parametro
+			el Prefijo de KEY a mostrar
